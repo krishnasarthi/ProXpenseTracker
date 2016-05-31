@@ -41,7 +41,7 @@ module.exports = function(app){
 			}
 			if(paymenttype){
 				_.merge(paymenttype,req.body);
-				PaymentType.save(function(err){
+				paymenttype.save(function(err){
 					if(err){
 				res.json({info : 'Error in saving new Payment type'});
 				}

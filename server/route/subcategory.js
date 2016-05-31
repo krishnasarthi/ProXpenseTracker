@@ -41,7 +41,7 @@ module.exports = function(app){
 			}
 			if(subcategory){
 				_.merge(subcategory,req.body);
-				Subcategory.save(function(err){
+				subcategory.save(function(err){
 					if(err){
 				res.json({info : 'Error in saving new subcategory'});
 				}
