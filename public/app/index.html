@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="xpenseTrakApp">
+<head>
+<link rel="stylesheet" type="text/css" href="./styles/app.css">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="./scripts/controller/mainController.js"></script>
+</head>
+<body ng-controller="mainController">
+<div class="panel-body">
+	<div class="row">
+		<div class="col-lg-3 col-md-4 form-group">
+		<label>Category</label>
+	    <select ng-model="category" class="form-control">
+				<option ng-repeat="category in categories.data" value="{{category._id}}">{{category.name}}</option>
+		</select>
+	</div>
+	<div class="col-lg-3 col-md-4 form-group">
+		<label>Sub-Category</label>
+	    <select ng-model="subcategory" class="form-control">
+				<option ng-repeat="subcategory in subcategories.data" value="{{subcategory._id}}">{{subcategory.name}}</option>
+		</select>
+	</div>
+	<div class="col-lg-3 col-md-4 form-group">
+		<label>Payments</label>
+	    <select ng-model="paymentType" class="form-control">
+				<option ng-repeat="payment in paymentTypes.data" value="{{payment._id}}">{{payment.type}}</option>
+		</select> 
+	</div>
+	</div>
+</body>
+</html>

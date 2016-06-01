@@ -1,0 +1,22 @@
+{
+  "name": "proxpensetraker",
+  "description": "Personel Expense Tracker app",
+  "main": "index.js",
+  "authors": [
+    "Krishna sarthi"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/krishnasarthi/ProXpenseTracker",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6"
+  }
+}

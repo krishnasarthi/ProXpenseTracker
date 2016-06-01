@@ -59,9 +59,5 @@ module.exports = function(app){
 			}
 			res.json({info:'Category deleted successfully'});
 		});
-	});
-
-	// app.get('*',function(req,res){
-	// 	res.json({info:'Welcome to XpenseTraker'});
-	// });
+	});	
 };
