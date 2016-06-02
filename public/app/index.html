@@ -1,33 +1,54 @@
-<!doctype html>
+ <!doctype html>
 <html ng-app="xpenseTrakApp">
 <head>
+<!-- Stylesheets references-->
 <link rel="stylesheet" type="text/css" href="./styles/app.css">
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.css"> -->
+
+<!-- Script references -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script> -->
 <script src="./scripts/controller/mainController.js"></script>
 </head>
-<body ng-controller="mainController">
+<body ng-controller="mainController" class="styleguide">
+<div class="panel">
+<div class="panel-heading">
+<div class="panel-title">Add Transaction</div>
+ </div>
 <div class="panel-body">
-	<div class="row">
-		<div class="col-lg-3 col-md-4 form-group">
-		<label>Category</label>
-	    <select ng-model="category" class="form-control">
-				<option ng-repeat="category in categories.data" value="{{category._id}}">{{category.name}}</option>
-		</select>
-	</div>
-	<div class="col-lg-3 col-md-4 form-group">
-		<label>Sub-Category</label>
-	    <select ng-model="subcategory" class="form-control">
-				<option ng-repeat="subcategory in subcategories.data" value="{{subcategory._id}}">{{subcategory.name}}</option>
-		</select>
-	</div>
-	<div class="col-lg-3 col-md-4 form-group">
-		<label>Payments</label>
-	    <select ng-model="paymentType" class="form-control">
-				<option ng-repeat="payment in paymentTypes.data" value="{{payment._id}}">{{payment.type}}</option>
-		</select> 
-	</div>
-	</div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 form-group">
+    <label>Category</label>
+     <select ng-model="category" class="form-control" ng-options="category as category.name for category in categories track by category._id" ng-change="getSubCategory()"></select>
+  </div>
+  <div class="col-lg-4 col-md-6 form-group">
+    <label>Sub-Category</label>
+    <select ng-model="subcategory" class="form-control" ng-options="subcategory as subcategory.name for subcategory in subcategories track by subcategory._id"></select>
+  </div></div>
+  <div class="row">
+	  <div class="col-lg-4 col-md-6 form-group">
+	    <label>Payments</label>
+	    <select ng-model="paymentType" class="form-control" ng-options="payment as payment.type for payment in paymentTypes track by payment._id">
+	    </select>
+	  </div>
+	  <div class="col-lg-4 col-md-6 form-group">
+	    <label>Amount in Rs.</label>
+	   	<input type="text" class="form-control" ng-model="amount">
+	  </div>
+  </div>
+  <div class="row">
+	  <div class="col-lg-4 col-md-6 form-group">
+	    <label>Additional Notes</label>
+	    <!-- <textarea ng-model="notes" class="form-control"></textarea> -->
+	    <input type="text" class="form-control" ng-model="note">
+	  </div>
+	  <div class="col-lg-4 col-md-6 form-group">
+	    <label>Transaction date</label>
+	   <input type="text" ng-model="transactionDate" class="form-control">
+	  </div>
+  </div>
+  </div>
+  </div>
 </body>
-</html>

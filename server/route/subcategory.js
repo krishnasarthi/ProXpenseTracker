@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var Subcategory = require('../model/subcategory.js');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 module.exports = function(app){
 	/* Create */
@@ -29,7 +30,16 @@ module.exports = function(app){
 			if(err){
 				res.json({info:'Error in finding Category',error:err});
 			}
-			res.json({info:'Category found successfully',data:subcategory});
+			res.json({info:'Subcategory found successfully',data:subcategory});
+		});
+	});
+
+	app.get('/subcategory/:id/:categoryId',function(req,res){
+		Subcategory.find({"CategoryId":new ObjectId(req.params.categoryId)},function(err,subcategory){
+			if(err){
+				res.json({info:'Error in finding Category',error:err});
+			}
+			res.json({info:'Subcategory found successfully',data:subcategory});
 		});
 	});
 
