@@ -1,10 +1,9 @@
-angular
-    .module('xpenseTrakApp', [])
-    .controller('mainController', ['$scope', '$http', function ($scope, $http) {
+appModule
+  .controller('mainController', ['$scope', '$http', function ($scope, $http) {
         $scope.paymentTypes = [];
         $scope.categories = [];
         $scope.subcategories = [];
-        $scope.amount= 0;
+        $scope.amount = 0;
         
         var _date = new Date();
         var day = _date.getDate();
@@ -59,6 +58,28 @@ angular
                console.log(err);
            });
             }
+        }
+
+        $scope.savePayment = function(){
+          // var amount =  $scope.amount;
+          // var notes = $scope.note;
+          // var paymentDate = new Date();
+          // var Category = {categoryId : $scope.category._id, name : $scope.category.name};
+          // var SubCategory = {subcategoryId : $scope.subcategory._id, name : $scope.subcategory.name};
+          // var PaymentType = {paymentType : $scope.paymentType._id, type : $scope.paymentType.type};
+          // console.log(amount + ',' + notes + ',' + paymentDate + ', ' + Category + ', ' + SubCategory + ', ' + PaymentType);
+
+          $http.post('/payment',$scope.paymentForm).
+            success(function(res){
+                console.log('success ' +  res);
+            })
+            .error(function(err){
+                console.log('error ' +  err);
+            });
+        }
+
+        $scope.AddCategory = function(){
+          alert('Please redirect to Add Category screen');
         }
      }
 ]);
