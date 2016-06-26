@@ -4,6 +4,11 @@
 <!-- Stylesheets references-->
 <link rel="stylesheet" type="text/css" href="./styles/app.css">
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<style type="text/css">
+    .form-control{
+        border-radius: 0px;
+    }
+</style>
 
 <!-- Script references -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -17,8 +22,11 @@
     <section class="styleguide-app-body">
         <nav class="styleguide-app-navigation">
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="./#/">Home</a></li>
+                <li><a href="./#/">New Expense</a></li>
                 <li><a href="./#/category">Category</a></li>
+                <li><a href="./#/subcategory">Sub Category</a></li>
+                <li><a href="./#/paymenttype">Payment Option</a></li>
+                <li><a href="./#/transactions">View Expenses</a></li>
             </ul>
         </nav>
         <div class="styleguide-app-content-view">
@@ -34,5 +42,11 @@
 <!-- C O N T R O L L E R S -->
 <script src="./scripts/controller/mainController.js"></script>
 <script src="./scripts/controller/categoryController.js"></script>
+<script src="./scripts/controller/subcategoryController.js"></script>
+<script src="./scripts/controller/paymenttypeController.js"></script>
+<script src="./scripts/controller/transactionsController.js"></script>
+
+<!-- D I R E C T I V E S -->
+<script src="./scripts/directive/numbersOnly.js"></script>
 </body>
 </html>

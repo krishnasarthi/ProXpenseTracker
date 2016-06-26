@@ -34,8 +34,8 @@ module.exports = function(app){
 		});
 	});
 
-	app.get('/subcategory/:id/:categoryId',function(req,res){
-		Subcategory.find({"CategoryId":new ObjectId(req.params.categoryId)},function(err,subcategory){
+	app.get('/subcategory/:id/:categoryId/:categoryName',function(req,res){
+		Subcategory.find({"category":{"categoryId":req.params.categoryId,"name":req.params.categoryName}},function(err,subcategory){
 			if(err){
 				res.json({info:'Error in finding Category',error:err});
 			}

@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 
 var paymentTypeSchema = mongoose.Schema({
-	type : String
+	name : String,
+	description : String,
+	insertdate : Date
 });
 
 module.exports = mongoose.model('PaymentType',paymentTypeSchema);

@@ -1,0 +1,46 @@
+ <div class="app-detail-panel">
+ 	<div class="col-lg-12">
+ 		<div class="row" style="margin-bottom:20px;">
+ 			<div class="col-lg-4 col-md-4">
+ 				<h2>Expenses</h2>
+ 			</div>
+ 		</div>
+ 		<div class="row" style="margin-bottom:20px;">
+ 			<div class="col-lg-6">
+ 				<div class="grid" style="max-height:320px;overflow:auto;">
+ 					<table cellspacing="0" border="1" style="border-collapse:collapse;" class="table table-striped table-hover">
+ 						<thead>
+ 							<tr>
+ 								<th>Action</th>
+ 								<th>Description</th>
+ 								<th>Category</th>
+ 								<th>Sub Category</th>
+ 								<th>Amount</th>
+ 								<th>Transaction Date</th>
+ 								<th>Payment Type</th>
+ 							</tr>
+ 						</thead>
+ 						<tbody>
+ 							<tr class="form-row" align="left" ng-repeat="transaction in transactions">
+ 								<td style="width:50px;"> 
+ 									<a ng-click="updateCategory(category);" title="Edit">
+ 										<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+ 									</a>
+ 									<a ng-click="deleteTransaction(transaction);" title="Delete">
+ 										<i class="fa fa-trash-o" aria-hidden="true"></i>
+ 									</a>
+ 								</td>
+ 								<td><span>{{transaction.description}}</span></td>
+ 								<td><span>{{transaction.category.name}}</span></td>
+ 								<td><span>{{transaction.subCategory.name}}</span></td>
+ 								<td><span>{{transaction.amount}}</span></td>
+ 								<td><span>{{transaction.paymentDate | date : format}}</span></td>
+ 								<td><span>{{transaction.paymentType.name}}</span></td>
+ 							</tr>
+ 						</tbody>
+ 					</table>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
