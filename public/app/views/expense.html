@@ -32,10 +32,17 @@
          </div>
          <div class="col-lg-4 col-md-6 form-group">
            <label>Transaction date</label>
-           <input type="text" name="transactionDate" class="form-control" ng-model="transactionDate" required>
-         </div>
-       </div>
-       <div class="row">
+           <!-- <input type="text" name="transactionDate" class="form-control" ng-model="transactionDate" required> -->
+           <div class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="transactionDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+           <div class="input-group-addon btn btn-primary" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></div>
+            <!-- <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-lg-6 col-md-6 form-group">
          <input type="submit" class="btn btn-secondary" ng-disabled="paymentForm.$invalid" value="Save" ng-click="savePayment()">
        </div>

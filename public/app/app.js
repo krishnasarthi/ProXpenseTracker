@@ -1,5 +1,8 @@
-var appModule =  angular.module('xpenseTrakApp', ['ngRoute']);
-
+var appModule =  angular.module('xpenseTrakApp', [
+					'ngRoute',
+					'ngAnimate',
+					'ui.bootstrap'
+				]);
 
 appModule.config(['$locationProvider','$routeProvider',
 	function config($locationProvider,$routeProvider){
