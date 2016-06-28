@@ -13,6 +13,9 @@ appModule
 		});
 	})();
 
+	$scope.sortType = '';
+	$scope.sortReverse = false;
+
 	$scope.refresh = function(){
 		$route.reload();
 	}

@@ -22,6 +22,9 @@ controller('paymenttypeController',['$scope','$http','$log','$route',function($s
 		description: '',
 		insertdate : ''
 	};
+
+	$scope.sortType = '';
+	$scope.sortReverse = false;
 	
 	$scope.showTemplate = function(){
 		return _displayFlag;

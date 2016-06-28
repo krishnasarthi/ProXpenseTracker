@@ -23,6 +23,9 @@ appModule
 
     $scope.flag = false;
 
+    $scope.sortType = '';
+    $scope.sortReverse = false;
+
     $scope.showTemplate = function(){
         return $scope.flag;
     }

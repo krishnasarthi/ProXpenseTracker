@@ -26,12 +26,18 @@
 							<thead>
 								<tr>
 									<th>Actions</th>
-									<th>Name</th>
-									<th>Category</th>
+									<th><div ng-click="sortType = 'name';sortReverse = !sortReverse" style="cursor:pointer;">
+										Name
+										<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+									</div></th>
+									<th><div ng-click="sortType = 'category.name';sortReverse = !sortReverse" style="cursor:pointer;">
+										Category
+										<span ng-show="sortType == 'category.name'" class="fa fa-caret-down"></span>
+									</div></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="form-row" align="left" ng-repeat="subcategory in subcategories">
+								<tr class="form-row" align="left" ng-repeat="subcategory in subcategories | orderBy:sortType:sortReverse">
 									<td style="width:50px;">
 										<a ng-click="updateSubCategory(subcategory);" title="Edit">
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
