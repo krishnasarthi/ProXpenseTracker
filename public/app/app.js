@@ -1,8 +1,8 @@
 var appModule =  angular.module('xpenseTrakApp', [
-					'ngRoute',
-					'ngAnimate',
-					'ui.bootstrap'
-				]);
+	'ngRoute',
+	'ngAnimate',
+	'ui.bootstrap'
+	]);
 
 appModule.config(['$locationProvider','$routeProvider',
 	function config($locationProvider,$routeProvider){
@@ -27,6 +27,10 @@ appModule.config(['$locationProvider','$routeProvider',
 		when('/transactions',{
 			templateUrl: 'views/expenses.html',
 			controller : 'transactionsController'	
+		}).
+		when('/editpayment/:id',{
+			templateUrl: 'views/editpayment.html',
+			controller : 'paymenteditController'	
 		})
 		.otherwise({
 			redirectTo: '/'

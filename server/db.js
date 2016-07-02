@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var _devEnvironment = false;
+var _devEnvironment = true;
 
 if(_devEnvironment){
 	mongoose.connect('mongodb://localhost/expensedb');

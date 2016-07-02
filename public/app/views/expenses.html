@@ -60,7 +60,7 @@
  							<tr class="form-row" align="left" 
  							ng-repeat="transaction in transactions | orderBy:sortType:sortReverse|filter:search">
  							<td style="width:50px;"> 
- 								<a ng-click="updateCategory(category);" title="Edit">
+ 								<a ng-click="editTransaction(transaction);" title="Edit">
  									<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
  								</a>
  								<a ng-click="deleteTransaction(transaction);" title="Delete">
@@ -76,6 +76,7 @@
  						</tr>
  					</tbody>
  				</table>
+ 				<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
  			</div>
  		</div>
  	</div>
