@@ -22,13 +22,13 @@
 							<tr>
 								<th>Actions</th>
 								<th>
-									<div ng-click="sortType = 'name';sortReverse = !sortReverse" style="cursor:pointer;">
+									<div ng-click="sort('name');" style="cursor:pointer;">
 										Name
 										<span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
 									</div>
 								</th>
 								<th>
-									<div ng-click="sortType = 'description';sortReverse = !sortReverse" style="cursor:pointer;">
+									<div ng-click="sort('description')" style="cursor:pointer;">
 										Description
 										<span ng-show="sortType == 'description'" class="fa fa-caret-down"></span>
 									</div>

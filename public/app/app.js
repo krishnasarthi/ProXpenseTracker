@@ -21,6 +21,7 @@ appModule.config(['$locationProvider','$routeProvider',
 		})
 		.when('/paymenttype',{
 			templateUrl: 'views/paymenttype.html',
+			controllerAs : 'paymenttypeCtrl',
 			controller : 'paymenttypeController'	
 		}).
 		when('/transactions',{

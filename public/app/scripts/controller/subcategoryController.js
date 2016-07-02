@@ -1,6 +1,13 @@
 appModule
-.controller('subcategoryController',['$scope','$http','$log','$route',function($scope,$http,$log,$route) {
- _defaultOption = [{_id:-1,name:'All'}];
+.controller('subcategoryController',[
+  '$scope',
+  '$http',
+  '$log',
+  '$route',
+  '$controller',
+  function($scope,$http,$log,$route,$controller) {
+    var tableCtrl = $controller('tableController',{$scope:$scope});
+    _defaultOption = [{_id:-1,name:'All'}];
 
         // Initialization code to load categories and sub-categories
         var init =  function(){
@@ -53,8 +60,6 @@ appModule
       $scope.categories = [];
       $scope.flag = false;
       $scope.selectedOption = {};
-      $scope.sortType = '';
-      $scope.sortReverse = false;
 
       $scope.refresh = function(){
         $route.reload();

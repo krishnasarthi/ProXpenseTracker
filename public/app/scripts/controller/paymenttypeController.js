@@ -1,6 +1,13 @@
 appModule.
-controller('paymenttypeController',['$scope','$http','$log','$route',function($scope,$http,$log,$route){
-	var _displayFlag = false;
+controller('paymenttypeController',[
+	'$scope',
+	'$http',
+	'$log',
+	'$route',
+	'$controller',
+	function($scope,$http,$log,$route,$controller){
+		var tableCtrl = $controller('tableController',{$scope:$scope});
+		var _displayFlag = false;
 
 	// get all available payment types
 	(function(){
@@ -23,9 +30,6 @@ controller('paymenttypeController',['$scope','$http','$log','$route',function($s
 		insertdate : ''
 	};
 
-	$scope.sortType = '';
-	$scope.sortReverse = false;
-	
 	$scope.showTemplate = function(){
 		return _displayFlag;
 	}

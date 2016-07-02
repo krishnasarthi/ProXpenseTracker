@@ -4,7 +4,6 @@ var Payment = require('../model/payment.js');
 module.exports = function(app){
 	/* Create */
 	app.post('/payment',function(req,res){
-		
 		var payment = new Payment(req.body);
 		payment.save(function(err){
 			if(err){
@@ -16,7 +15,8 @@ module.exports = function(app){
 
 	/* Read */
 	app.get('/payment',function(req,res){
-		Payment.find(function(err,payments){
+		var query = Payment.find().sort({paymentDate:-1});
+		query.exec(function(err,payments){
 			if(err){
 				res.json({info:'Error finding Payment',error:err});
 			}
@@ -44,9 +44,9 @@ module.exports = function(app){
 				_.merge(payment,req.body);
 				payment.save(function(err){
 					if(err){
-				res.json({info : 'Error in saving new Payment'});
-				}
-				res.json({info : 'Payment saved successfully'});
+						res.json({info : 'Error in saving new Payment'});
+					}
+					res.json({info : 'Payment saved successfully'});
 				});
 			}
 		});
