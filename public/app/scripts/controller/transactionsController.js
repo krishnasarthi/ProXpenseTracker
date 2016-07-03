@@ -1,25 +1,17 @@
 appModule
 .controller('transactionsController',[
 	'$scope',
-	'$http',
 	'$log',
 	'$route',
 	'$controller',
 	'$location',
-	function($scope,$http,$log,$route,$controller,$location){
+	'dataService',
+	function($scope,$log,$route,$controller,$location,dataService){
 		var tableCtrl = $controller('tableController',{$scope:$scope});
-
-		$scope.totalItems = 0;
-		$scope.currentPage = 1;
-		$scope.maxSize = 5;
-
-		$scope.pageChanged = function() {
-			$log.log('Page changed to: ' + $scope.currentPage);
-		};
 
 		// initialization code for controller
 		(function(){
-			$http.get('/payment')
+			dataService.getPayment()
 			.success(function (res) {
 				if(res && res.data){
 					$scope.transactions = res.data;
@@ -39,12 +31,12 @@ appModule
 		$scope.deleteTransaction = function(transaction){
 			$log.debug(transaction);
 
-			$http.delete('/payment/' + transaction._id).
-			success(function(res){
+			dataService.deletePayment(transaction._id)
+			.success(function(res){
 				$log.debug('success ' + res);
 				$scope.refresh();
-			}).
-			error(function(err){
+			})
+			.error(function(err){
 				$log.debug('error ' + err);
 			});
 		}

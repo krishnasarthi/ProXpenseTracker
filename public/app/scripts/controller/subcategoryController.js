@@ -1,17 +1,17 @@
 appModule
 .controller('subcategoryController',[
   '$scope',
-  '$http',
   '$log',
   '$route',
   '$controller',
-  function($scope,$http,$log,$route,$controller) {
+  'dataService',
+  function($scope,$log,$route,$controller,dataService) {
     var tableCtrl = $controller('tableController',{$scope:$scope});
     _defaultOption = [{_id:-1,name:'All'}];
 
         // Initialization code to load categories and sub-categories
         var init =  function(){
-          $http.get('/subcategory')
+          dataService.getSubCategory()
           .success(function (res) {
             if(res && res.data){
               $scope.subcategories = res.data;
@@ -27,7 +27,7 @@ appModule
         };
 
         var getCategory = function(customOption){
-         $http.get('/category')
+         dataService.getCategory()
          .success(function (res) {
            if(res && res.data){
             $scope.categories = res.data;
@@ -107,14 +107,14 @@ appModule
       $scope.deleteSubCategory = function(param){
        $log.debug(param);
 
-       $scope.subCategory = {
+      /* $scope.subCategory = {
         id : param._id,
         name : param.name,
         category : param.category
-      }
+      }*/
 
-      $http.delete('/subcategory/' + $scope.subCategory.id,$scope.subCategory).
-      success(function(res){
+      dataService.deleteSubCategory(param._id)
+      .success(function(res){
         $log.debug('success ' + res);
         $scope.refresh();
       }).
@@ -126,12 +126,12 @@ appModule
     $scope.saveSubCategory = function(){
       if($scope.subCategory.id){
         $scope.subCategory.category = $scope.selectedOption;
-        $http.put('/subcategory/' + $scope.subCategory.id,$scope.subCategory).
-        success(function(res){
+        dataService.updateSubCategory($scope.subCategory)
+        .success(function(res){
           $log.debug('success ' + res);
           $scope.refresh();
-        }).
-        error(function(err){
+        })
+        .error(function(err){
           $log.debug('error ' + err);
         })
       }else{
@@ -143,14 +143,14 @@ appModule
           }
         };
 
-        $http.post('/subcategory',newSubCategory).
-        success(function(res){
+        dataService.saveSubCategory(newSubCategory)
+        .success(function(res){
           $log.debug('Success ' + res);
           $scope.refresh();
-        }).
-        error(function(err){
-          $log.debug('Error ' + err);
         })
-      }
-    };
+        .error(function(err){
+          $log.debug('Error ' + err);
+        });
+    }
+  }
   }]);

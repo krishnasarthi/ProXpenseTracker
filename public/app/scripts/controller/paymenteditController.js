@@ -1,12 +1,11 @@
 appModule.
 controller('paymenteditController',[
 	'$scope',
-	'$http',
 	'$log',
 	'$route',
 	'$routeParams',
 	'dataService',
-	function($scope,$http,$log,$route,$routeParams,dataService){
+	function($scope,$log,$route,$routeParams,dataService){
 		$scope.paymentId = $routeParams.id;
 
 		dataService.getPaymentById($routeParams.id).success(function (res){
@@ -16,8 +15,6 @@ controller('paymenteditController',[
 		}).error(function(err){
 			$log.debug(err);
 		});
-
-
 
 		/*(function(){*/
 

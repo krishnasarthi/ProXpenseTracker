@@ -1,14 +1,14 @@
 appModule
 .controller('categoryController', [
     '$scope', 
-    '$http',
+    'dataService',
     '$log',
     '$route', 
     '$controller',
-    function ($scope, $http, $log, $route,$controller) {
+    function ($scope, dataService, $log, $route,$controller) {
         var tableCtrl = $controller('tableController',{$scope:$scope});
         (function(){
-            $http.get('/category')
+            dataService.getCategory()
             .success(function (res) {
                 if(res && res.data){
                     $scope.categories = res.data;
@@ -56,7 +56,7 @@ appModule
                 id : param._id,
                 name : param.name
             };
-            $http.delete('/category/' + $scope.category.id,$scope.category).
+            dataService.deleteCategory(param._id).
             success(function(res){
                 $log.debug('success ' + res);
                 $scope.refresh();
@@ -72,7 +72,7 @@ appModule
 
         $scope.saveCategory = function(){
             if($scope.category.id){ 
-             $http.put('/category/' + $scope.category.id,$scope.category).
+             dataService.updateCategory($scope.category.id,$scope.category).
              success(function(res){
                 $log.debug('success ' + res);
                 $scope.refresh();
@@ -81,7 +81,7 @@ appModule
                 $log.debug('error ' + err);
             })
          }else{ 
-            $http.post('/category',$scope.category).
+            dataService.saveCategory($scope.category).
             success(function(res){
                 $log.debug('success ' + res);
                 $scope.refresh();

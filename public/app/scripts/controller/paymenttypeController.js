@@ -1,17 +1,17 @@
 appModule.
 controller('paymenttypeController',[
 	'$scope',
-	'$http',
 	'$log',
 	'$route',
 	'$controller',
-	function($scope,$http,$log,$route,$controller){
+	'dataService',
+	function($scope,$log,$route,$controller,dataService){
 		var tableCtrl = $controller('tableController',{$scope:$scope});
 		var _displayFlag = false;
 
 	// get all available payment types
 	(function(){
-		$http.get('/paymenttype')
+		dataService.getPaymentType()
 		.success(function (res) {
 			if(res && res.data){
 				$scope.paymentTypes = res.data;
@@ -47,12 +47,12 @@ controller('paymenttypeController',[
 	}
 
 	$scope.deletePaymentType = function(paymentType){
-		$http.delete('/paymenttype/' + paymentType._id).
-		success(function(res){
+		dataService.deletePaymentType(paymentType._id)
+		.success(function(res){
 			$log.debug('success ' + res);
 			$scope.refresh();
-		}).
-		error(function(err){
+		})
+		.error(function(err){
 			$log.debug('error ' + err);
 		});
 	}
@@ -76,23 +76,23 @@ controller('paymenttypeController',[
 	insertNewPaymentType = function(){
 		$scope.paymentType.insertdate = new Date();
 
-		$http.post('/paymenttype',$scope.paymentType).
-		success(function(res){
+		dataService.savePaymentType($scope.paymentType)
+		.success(function(res){
 			$log.debug('Success ' + res);
 			$scope.refresh();
-		}).
-		error(function(err){
+		})
+		.error(function(err){
 			$log.debug('Error ' + err);
 		})
 	}
 
 	updateExistingPaymentType = function(){
-		$http.put('/paymenttype/' + $scope.paymentType._id,$scope.paymentType).
-		success(function(res){
+		dataService.updatePaymentType($scope.paymentType._id,$scope.paymentType)
+		.success(function(res){
 			$log.debug('success ' + res);
 			$scope.refresh();
-		}).
-		error(function(err){
+		})
+		.error(function(err){
 			$log.debug('error ' + err);
 		})
 	}

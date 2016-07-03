@@ -1,11 +1,11 @@
 appModule
 .controller('mainController', [
   '$scope', 
-  '$http',
   '$log',
   '$route', 
   '$controller',
-  function ($scope, $http,$log,$route,$controller) {
+  'dataService',
+  function ($scope,$log,$route,$controller,dataService) {
     var datepickerCtrl = $controller('datepickerController',{$scope:$scope});
 
     $scope.paymentTypes = [];
@@ -16,7 +16,7 @@ appModule
     defaultOption = [{_id:-1,name:'No category found'}];
 
     (function(){
-      $http.get('/category')
+      dataService.getCategory()
       .success(function (res) {
        if(res && res.data){
          $scope.categories = res.data;
@@ -29,7 +29,7 @@ appModule
        $log.debug(err);
      });
 
-      $http.get('/paymenttype')
+      dataService.getPaymentType()
       .success(function (res) {
         if(res && res.data){
           $scope.paymentTypes = res.data;
@@ -50,7 +50,7 @@ appModule
           name:$scope.category.name
         };
 
-        $http.get('/subcategory/null/' + $scope.category._id + '/' + $scope.category.name)
+        dataService.getSubCategoryByCategory($scope.category)
         .success(function (res) {
           if(res && res.data){
             if(res.data.length == 0){
@@ -92,8 +92,8 @@ appModule
         }
       }
 
-      $http.post('/payment',payment).
-      success(function(res){
+      dataService.savePayment(payment)
+      .success(function(res){
         $log.debug('success ' +  res);
         $scope.refresh();
       })
