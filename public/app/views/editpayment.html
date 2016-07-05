@@ -1,2 +1,50 @@
-{{paymentId}}
+<form name="editPaymentForm" novalidate>
+	<div class="panel">
+		<div class="panel-heading">
+			<div class="panel-title"><h2>Edit Expense</h2></div>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 form-group">
+					<label>Description</label>
+					<input type="text" name="note" class="form-control" ng-model="payment.singleTransaction.description" required>
+				</div>
+				<div class="col-lg-4 col-md-6 form-group">
+					<label>Amount in INR</label>
+					<input type="text" name="note" class="form-control" ng-model="payment.singleTransaction.amount" numbers-only required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 form-group">
+					<label>Category</label>
+					<select ng-model="payment.singleTransaction.category" class="form-control" ng-options="category as category.name for category in payment.categories track by category._id" 
+					ng-change="payment.categoryChangeEvent()"></select>
+				</div>
+				<div class="col-lg-4 col-md-6 form-group">
+					<label>Sub-Category</label>
+					<select ng-model="payment.singleTransaction.subCategory" class="form-control" ng-options="subcategory as subcategory.name for subcategory in payment.subCategories track by subcategory._id"></select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 form-group">
+					<label>Payment Date</label>
+					<input type="text" class="form-control" ng-model="payment.singleTransaction.paymentDate"/>
+					<!-- <div class="input-group">
+						<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="payment.singleTransaction.paymentDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+						<div class="input-group-addon btn btn-primary" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></div>
+					</div> -->
+				</div>
+				<div class="col-lg-4 col-md-6 form-group">
+					<label>Paid by</label>
+					<select ng-model="payment.singleTransaction.paymentType" class="form-control" ng-options="paymentType as paymentType.name for paymentType in payment.paymentTypes track by paymentType._id" ></select>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-lg-8 col-md-12 form-group">
+					 <input style="float:right;" type="submit" class="btn btn-secondary" ng-disabled="editPaymentForm.$invalid" value="Save" 
+					 ng-click="payment.savePayment()">
+				</div>
+			</div>
+		</div>
+	</form> 
 

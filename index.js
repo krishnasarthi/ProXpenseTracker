@@ -18,7 +18,7 @@ var paymenttype = require('./server/route/payment.js')(app);
 
 app.get('*',function(req,res) {
 	res.sendFile(path.join(__dirname,'./public/app/index.html'));
-});
+}); 
 
 var server = app.listen(3000,function(){
 	console.log('Server running at http://127.0.0.1:3000');

@@ -30,7 +30,8 @@ appModule.config(['$locationProvider','$routeProvider',
 		}).
 		when('/editpayment/:id',{
 			templateUrl: 'views/editpayment.html',
-			controller : 'paymenteditController'	
+			controller : 'paymenteditController',
+			controllerAs : 'payment'	
 		})
 		.otherwise({
 			redirectTo: '/'

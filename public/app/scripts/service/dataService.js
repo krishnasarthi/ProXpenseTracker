@@ -18,8 +18,8 @@ this.savePayment = function(payment){
 	return $http.post('/payment',payment);
 }
 
-this.updatePayment = function(payment){
-	return $http.put('/payment',payment);
+this.updatePayment = function(id,payment){
+	return $http.put('/payment/'+ id,payment);
 }
 
 //---------------------------- Category API -----------------------------------------------
